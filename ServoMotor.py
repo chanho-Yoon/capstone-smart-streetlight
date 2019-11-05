@@ -36,7 +36,7 @@ try:
      		#print "soundlevel first!",soundlevel
 
      		sleep(0.2)
-		if soundlevel == 1 :  
+		if soundlevel >=  200 :  
 			
 			angle = 40
                 	duty = float(angle) / 10.0 + 2.5
@@ -45,7 +45,7 @@ try:
 			
 			print "1111111111111 ---- " , soundlevel
 
-		elif soundlevel == 0 :
+		elif soundlevel >= 200 :
 			angle = 150
                         duty = float(angle) / 10.0 + 2.5
                         p.ChangeDutyCycle(duty)

@@ -16,33 +16,37 @@ angle = 90
 duty = float(angle) / 10.0 + 2.5
 p.ChangeDutyCycle(duty)
 time.sleep(1)
-
-
+'''sound left, right'''
 soundL=0;
 soundR=0;
-
-
+	
 while 1 :
 	dustVal = ser.readline();
 	print dustVal;
-
+	
 	value = dustVal.split();	
-	print value;
+	
 	soundL = int(value[2]);
 	soundR = int(value[3]);
-
+	
 	if soundL > 140 :
 		angle = 40
                 duty = float(angle) / 10.0 + 2.5
                 p.ChangeDutyCycle(duty)
-                time.sleep(10)
 		print "40-----"
+		time.sleep(6)
+		angle = 90 
+                duty = float(angle) / 10.0 + 2.5
+                p.ChangeDutyCycle(duty)
+		soundR = 0;
+
 	elif soundR > 140 :
 		angle = 150
                 duty = float(angle) / 10.0 + 2.5
                 p.ChangeDutyCycle(duty)
-                time.sleep(10)
 		print "150----"
-	
-	
-
+		time.sleep(6)
+		angle = 90 
+                duty = float(angle) / 10.0 + 2.5
+                p.ChangeDutyCycle(duty)
+		soundL = 0;

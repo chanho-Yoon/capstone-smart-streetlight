@@ -6,6 +6,7 @@ import pymysql
 ser = serial.Serial('/dev/ttyACM0',9600)
 db = pymysql.connect(host="localhost",user="root",passwd="1234",db="kdn",charset='utf8')
 curs=db.cursor()
+
  
 while 1:
         sonic = ser.readline()

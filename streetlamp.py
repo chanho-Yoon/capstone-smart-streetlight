@@ -36,8 +36,8 @@ app = Flask(__name__)
 
 
 def hello():
-    dustVal = ser.readline()
-    value = dustVal.split()
+    dataVal = ser.readline()
+    value = dataVal.split()
 
     soundL = int(value[2])
     soundR = int(value[3])

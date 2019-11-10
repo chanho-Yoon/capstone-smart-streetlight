@@ -1,3 +1,4 @@
+
 import RPi. GPIO as GPIO
 from time import sleep
 import time
@@ -40,7 +41,7 @@ while 1 :
                 p.ChangeDutyCycle(duty)
 		soundR = 0
 		
-		
+	
 	elif soundR > 140 :
 		angle = 150
                 duty = float(angle) / 10.0 + 2.5

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+#myNavbar{
+  background-color: white;
+}
+#myNavbar a{
+  color: black;
+}
+
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  background-image: url('/w3images/parallax1.jpg');
+  min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+  background-image: url("/w3images/parallax2.jpg");
+  min-height: 400px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+  background-image: url("/w3images/parallax3.jpg");
+  min-height: 400px;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+}
+/* 목록 이미지 */
+.w3-bar-item img:last-child{display:none}
+.w3-bar-item:hover img:first-child{display:none} 
+.w3-bar-item:hover img:last-child{display:inline-block} 
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="1.html" class="w3-bar-item w3-button">HOME</a>
+    <a href="2.html" class="w3-bar-item w3-button w3-hide-small"><img src="cctv_g.png" style="width: 15px;" /><img src="cctv.png" style="width: 15px;" /> &nbsp; CCTV</a>
+    <a href="3.html" class="w3-bar-item w3-button w3-hide-small"><img src="lamp_g.png" style="width: 18px;"><img src="lamp.png" style="width: 18px;"> &nbsp; 가로등 고장예측</a>
+    <a href="4.html" class="w3-bar-item w3-button w3-hide-small"><img src="mask_g.png" style="width: 17px;"><img src="mask.png" style="width: 17px;"> &nbsp; 미세먼지 수치</a>
+    <a href="5.html" class="w3-bar-item w3-button w3-hide-small"><img src="mask_g.png" style="width: 17px;"><img src="mask.png" style="width: 17px;"> &nbsp; 전류량 측정</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+      <i class="fa fa-search"></i>
+    </a>
+  </div>
+
+<div>
+  <img src="7.jpg" width="100%" height="200px">
+  <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">전류량 측정</span>
+</div>
+
+ 
+</body>
+</html>

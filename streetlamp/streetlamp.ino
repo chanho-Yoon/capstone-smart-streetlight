@@ -1,4 +1,3 @@
- 
 // VALUE -----------------------------------------------
 int pin_led = A0;
 int pin_shock = 3;
@@ -31,6 +30,7 @@ void setup() {
 }
 
 void loop() {
+  
   // put your main code here, to run repeatedly:
   // LED --------------------------------------------
   int light = analogRead(pin_led);
@@ -55,10 +55,6 @@ void loop() {
   chsoundR = String(soundd2);
   //sound LR ------------------------
   
-  if(count >= 40) {
-    count = 0;
-  }
-  // LED -----------------------------------------------
   // DUST ------------------------------
   digitalWrite(V_LED,LOW);
 
@@ -75,13 +71,17 @@ void loop() {
   Voltage = Vo_value * 5.0 / 1024.0;
 
   dustDensity = (Voltage - 0.3)/0.005;
-
-  delay(1000);
   // DUST ------------------------------
 
   chdust = String(dustDensity);
+  
   Serial.println(chledLight+" "+chcount+" "+chsoundL+" "+chsoundR+" "+chdust);
-  delay(800);
+
+  if(count >= 5) {
+    count = 0;
+  }
+
+  delay(1000);
 }
   void HIT_ISR(void) {
     count++;

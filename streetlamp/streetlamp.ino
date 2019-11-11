@@ -57,7 +57,6 @@ void loop() {
   
   // DUST ------------------------------
   digitalWrite(V_LED,LOW);
-
   delayMicroseconds(280);
 
   Vo_value = analogRead(Vo); 
@@ -77,11 +76,12 @@ void loop() {
   
   Serial.println(chledLight+" "+chcount+" "+chsoundL+" "+chsoundR+" "+chdust);
 
+  delay(1000);
   if(count >= 5) {
     count = 0;
   }
 
-  delay(1000);
+  
 }
   void HIT_ISR(void) {
     count++;

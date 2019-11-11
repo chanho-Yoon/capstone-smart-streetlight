@@ -2,7 +2,6 @@ import RPi. GPIO as GPIO
 from time import sleep
 import time
 import serial
-import serial
 import MySQLdb
 import pymysql
 
@@ -19,7 +18,7 @@ p.start(5)
 angle = 90
 duty = float(angle) / 10.0 + 2.5
 p.ChangeDutyCycle(duty)
-time.sleep(1)
+
 '''sound left, right'''
 soundL = 0
 soundR = 0
@@ -79,6 +78,7 @@ while 1:
                         db.commit()
                         print "End db commit"
                         shock = '0'
+
                 except:
                         print "Error: db commit"
                         db.rollback()

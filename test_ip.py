@@ -6,7 +6,7 @@ import serial
 import MySQLdb
 import pymysql
 
-ser = serial.Serial('/dev/ttyACM0', 9600)
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=None, xonxoff=False, rtscts=False, dsrdtr=False)
 
 '''servo moter sensor'''
 GPIO.setmode(GPIO.BCM)
@@ -15,6 +15,7 @@ GPIO.setup(26, GPIO.OUT)
 p = GPIO.PWM(26, 100)
 p.start(5)
 '''servo moter 90 reset'''
+
 angle = 90
 duty = float(angle) / 10.0 + 2.5
 p.ChangeDutyCycle(duty)
@@ -26,10 +27,11 @@ db = pymysql.connect(host="localhost", user="root",
                      passwd="1234", db="kdn", charset='utf8')
 curs = db.cursor()
 circle_time = 1
+dataVal = ser.readline()
 
 while 1:
         dataVal = ser.readline()
-	print dataVal
+        print dataVal
 	value = dataVal.split() 
 
         light = value[0]
@@ -43,10 +45,6 @@ while 1:
                 duty = float(angle) / 10.0 + 2.5
                 p.ChangeDutyCycle(duty)
                 time.sleep(6)
-                angle = 90
-                duty = float(angle) / 10.0 + 2.5
-                p.ChangeDutyCycle(duty)
-                soundL = str(soundL)
                 try:
                         sql = "INSERT INTO sound (sensor_data, data_time) VALUES (%s , now())"
                         curs.execute(sql, (soundL))
@@ -63,10 +61,6 @@ while 1:
                 duty = float(angle) / 10.0 + 2.5
                 p.ChangeDutyCycle(duty)
 	        time.sleep(6)
-	        angle = 90
-                duty = float(angle) / 10.0 + 2.5
-                p.ChangeDutyCycle(duty)
-                soundR = str(soundR)
                 try:
                         sql = "INSERT INTO sound (sensor_data, data_time) VALUES (%s , now())"
                         curs.execute(sql, (soundR))
@@ -103,7 +97,6 @@ while 1:
                 except:
                         print "Error: db commit"
                         db.rollback()
-
-
-        sleep(1)
+        
+        time.sleep(2)
         circle_time += 1

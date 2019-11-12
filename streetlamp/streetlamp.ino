@@ -1,4 +1,8 @@
 // VALUE -----------------------------------------------
+#include <Servo.h>
+Servo servo;
+int servoPin=6;
+
 int pin_led = A0;
 int pin_shock = 3;
 int min_value = 544;
@@ -24,10 +28,11 @@ void setup() {
   
   Serial.begin(9600);
   pinMode(pin_shock,INPUT);
-  attachInterrupt(digitalPinToInterrupt(3),HIT_ISR,FALLING);
-  
+  attachInterrupt(digitalPinToInterrupt(3),HIT_ISR,FALLING); 
+  servo.attach(6);
   pinMode(V_LED, OUTPUT);
   pinMode(Vo, INPUT);
+  
 }
 
 void loop() {
@@ -40,15 +45,18 @@ void loop() {
   int soundd1 = analogRead(A2);
   int soundd2 = analogRead(A4);
   
-  analogWrite(9, ledLight);
-  analogWrite(10, ledLight);
   analogWrite(11, ledLight);
   if(ledLight<77) {
-    analogWrite(9, LOW);
-    analogWrite(10, LOW);
     analogWrite(11, LOW);
   }
-
+  
+  //----------------------servo-----------------
+  if(soundd1 > 150) {
+    servo.write(40);
+  } else if(soundd2 > 150) {
+    servo.write(150);
+  }
+  
   chledLight = String(ledLight);
   chcount = String(count);
   //sound LR ------------------------
@@ -72,7 +80,7 @@ void loop() {
 
   dustDensity = (Voltage - 0.3)/0.005;
   // DUST ------------------------------
-
+  
   chdust = String(dustDensity);
   if(count >= 1) {
     Serial.println(chledLight+" "+chcount+" "+chsoundL+" "+chsoundR+" "+chdust);
@@ -81,12 +89,9 @@ void loop() {
   else {
     Serial.println(chledLight+" "+chcount+" "+chsoundL+" "+chsoundR+" "+chdust);
   }
- 
 
-  delay(2000);
-  
-
-  
+  delay(1000);
+    
 }
   void HIT_ISR(void) {
     count++;

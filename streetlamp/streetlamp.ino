@@ -19,6 +19,10 @@ String chsoundL;
 String chsoundR;
 String chdust;
 
+String shockok = "shock";
+String shockno = "noshock";
+String soundokno = "soundno";
+
 float Vo_value = 0;
 float Voltage = 0;
 float dustDensity = 0;
@@ -51,10 +55,13 @@ void loop() {
   }
   
   //----------------------servo-----------------
-  if(soundd1 > 150) {
+  soundokno = "soundno";
+  if(soundd1 > 160) {
+    soundokno = "soundok";
     servo.write(40);
   } else if(soundd2 > 150) {
-    servo.write(150);
+    servo.write(130);
+    soundokno = "soundok";
   }
   
   chledLight = String(ledLight);
@@ -83,13 +90,13 @@ void loop() {
   
   chdust = String(dustDensity);
   if(count >= 1) {
-    Serial.println(chledLight+" "+chcount+" "+chsoundL+" "+chsoundR+" "+chdust);
+    Serial.println(chledLight+" "+shockok+" "+soundokno+" "+chdust);
     count = 0;
   }
   else {
-    Serial.println(chledLight+" "+chcount+" "+chsoundL+" "+chsoundR+" "+chdust);
+    Serial.println(chledLight+" "+shockno+" "+soundokno+" "+chdust);
   }
-
+  //Serial.println(chledLight+" "+shockok+" "+chsoundL+" "+chsoundR+" "+chdust);
   delay(1000);
     
 }

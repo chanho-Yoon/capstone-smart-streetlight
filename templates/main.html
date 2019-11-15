@@ -15,6 +15,7 @@
 
 <body>
   <script language="javascript" type="text/javascript">
+
     function loadlink() {
       $('#receive').load('http://0.0.0.0:5000/', function () {
         $(this).unwrap();
@@ -24,10 +25,10 @@
     loadlink(); // This will run on page load
     setInterval(function () {
       loadlink() // this will run after every 3 seconds
-    }, 3000);
+    },6000);
+
   </script>
   <!-- 목록창 만들기 -->
-  <div id="receive">
     <div class="w3-top">
       <div class="w3-bar" id="myNavbar">
         <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);"

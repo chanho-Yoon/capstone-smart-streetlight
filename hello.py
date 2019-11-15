@@ -6,7 +6,7 @@ import time
 import serial
 #import pymysql
 
-ser = serial.Serial('/dev/ttyACM0', 115200, timeout=None)
+ser = serial.Serial('/dev/ttyACM0', 115200)
 
 #servo moter sensor
 #servo moter 90 reset
@@ -39,6 +39,7 @@ def hello():
         dustString = '4'
     '''
     
+    time.sleep(6)
     dataVal = ser.readline()
     print (dataVal)
     value = dataVal.split(' ')         

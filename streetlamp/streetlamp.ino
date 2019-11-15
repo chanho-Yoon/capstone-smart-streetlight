@@ -87,6 +87,7 @@ void loop() {
   Voltage = Vo_value * 5.0 / 1024.0;
 
   dustDensity = (Voltage - 0.3)/0.005;
+  dustDensity = Int(dustDensity);
   chdust = String(dustDensity);
   
   if(count >= 1) {
@@ -98,7 +99,7 @@ void loop() {
   }
   //Serial.println(chledLight+" "+shockok+" "+chsoundL+" "+chsoundR+" "+chdust);
   
-  delay(5000);
+  delay(7000);
 }
   void HIT_ISR(void) {
     count++;

@@ -30,7 +30,7 @@ float dustDensity = 0;
 
 void setup() {
   
-  Serial.begin(9600);
+  Serial.begin(115200);
   pinMode(pin_shock,INPUT);
   attachInterrupt(digitalPinToInterrupt(3),HIT_ISR,FALLING); 
   servo.attach(6);
@@ -65,6 +65,7 @@ void loop() {
   }
   
   chledLight = String(ledLight);
+  
   chcount = String(count);
   //sound LR ------------------------
   chsoundL = String(soundd1);
@@ -86,9 +87,8 @@ void loop() {
   Voltage = Vo_value * 5.0 / 1024.0;
 
   dustDensity = (Voltage - 0.3)/0.005;
-  // DUST ------------------------------
-  
   chdust = String(dustDensity);
+  
   if(count >= 1) {
     Serial.println(chledLight+" "+shockok+" "+soundokno+" "+chdust);
     count = 0;
@@ -97,8 +97,8 @@ void loop() {
     Serial.println(chledLight+" "+shockno+" "+soundokno+" "+chdust);
   }
   //Serial.println(chledLight+" "+shockok+" "+chsoundL+" "+chsoundR+" "+chdust);
-  delay(1000);
-    
+  
+  delay(5000);
 }
   void HIT_ISR(void) {
     count++;

@@ -1,61 +1,56 @@
 from flask import Flask, render_template
-import RPi. GPIO as GPIO
 import datetime
 from time import sleep
 import time
 import serial
-#import pymysql
 
-ser = serial.Serial('/dev/ttyACM0', 115200)
 
-#servo moter sensor
-#servo moter 90 reset
-#angle = 90
-#duty = float(angle) / 10.0 + 2.5
-#p.ChangeDutyCycle(duty)
-#time.sleep(1)
-#sound left, right
-soundL = 0
-soundR = 0
+port = '/dev/ttyACM0'
+cmd = 'temp'
+ser = serial.Serial('/dev/ttyACM0', 9600)
+
+print(ser.name)
 
 app = Flask(__name__)
+
 @app.route("/")
 @app.route("/main")
 def hello():
-    '''
-    try:
-        dataVal = ser.read(ser.inWaiting())
-        print dataVal 
-        value = dataVal.split(' ')         
-        lightString = value[0]
-        shockString = value[1]
-        soundString = value[2]
-        dustString = value[3]                         
-        
-    except (OSError, serial.serialutil.SerialException):
-        lightString = '1'
-        shockString = '2'
-        soundString = '3'
-        dustString = '4'
-    '''
-    
-    time.sleep(6)
-    dataVal = ser.readline()
-    print (dataVal)
-    value = dataVal.split(' ')         
-    lightString = value[0]
-    shockString = value[1]
-    soundString = value[2]
-    dustString = value[3]                         
+    a = 1
+    while a:
+        if ser.in_waiting != 0 :
+            dataVal = ser.readline()
+            dataVal = dataVal[:-2].decode()
+            value = dataVal.split(',')
+            print (value)
+            lightString = value[0]
+            shockString = value[1]
+            soundString = value[2]
+            dustString = value[3]
+            
+            templateData = {
+            'light':lightString,
+            'shock':shockString,
+            'sound':soundString,
+            'dust':dustString
+            }
+            a = 0
+        else :
+            time.sleep(1)
 
-    templateData = {
-        'light':lightString,
-        'shock':shockString,
-        'sound':soundString,
-        'dust':dustString
-    }
-    
     return render_template('main.html',**templateData)
+    time.sleep(5)
+    ser.close()
+@app.route("/cctv.html")
+def cctv():
+    
+        return render_template('cctv.html')
+
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True)
+
     
     
     '''
@@ -80,7 +75,7 @@ def hello():
                            shock=shockString,
                            sound=soundString,
                            dust=dustString)
-    '''
+    
 #cctv
 @app.route("/cctv.html")
 def cctv():
@@ -90,3 +85,4 @@ def cctv():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
+    '''

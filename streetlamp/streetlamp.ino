@@ -19,18 +19,18 @@ String chsoundL;
 String chsoundR;
 String chdust;
 
-String shockok = "shock";
-String shockno = "noshock";
-String soundokno = "soundno";
+String shockok = "1";
+String shockno = "0";
+String soundokno = "0";
 
 float Vo_value = 0;
 float Voltage = 0;
-float dustDensity = 0;
+int dustDensity = 0;
 // VALUE -----------------------------------------------
 
 void setup() {
   
-  Serial.begin(115200);
+  Serial.begin(9600);
   pinMode(pin_shock,INPUT);
   attachInterrupt(digitalPinToInterrupt(3),HIT_ISR,FALLING); 
   servo.attach(6);
@@ -55,13 +55,13 @@ void loop() {
   }
   
   //----------------------servo-----------------
-  soundokno = "soundno";
+  soundokno = "0";
   if(soundd1 > 160) {
-    soundokno = "soundok";
-    servo.write(40);
+    soundokno = "1";
+    servo.write(30);
   } else if(soundd2 > 150) {
-    servo.write(130);
-    soundokno = "soundok";
+    servo.write(150);
+    soundokno = "1";
   }
   
   chledLight = String(ledLight);
@@ -87,19 +87,19 @@ void loop() {
   Voltage = Vo_value * 5.0 / 1024.0;
 
   dustDensity = (Voltage - 0.3)/0.005;
-  dustDensity = Int(dustDensity);
+  dustDensity = abs(dustDensity);
   chdust = String(dustDensity);
   
   if(count >= 1) {
-    Serial.println(chledLight+" "+shockok+" "+soundokno+" "+chdust);
+    Serial.println(chledLight+","+shockok+","+soundokno+","+chdust);
     count = 0;
   }
   else {
-    Serial.println(chledLight+" "+shockno+" "+soundokno+" "+chdust);
+    Serial.println(chledLight+","+shockno+","+soundokno+","+chdust);
   }
   //Serial.println(chledLight+" "+shockok+" "+chsoundL+" "+chsoundR+" "+chdust);
   
-  delay(7000);
+  delay(4950);
 }
   void HIT_ISR(void) {
     count++;

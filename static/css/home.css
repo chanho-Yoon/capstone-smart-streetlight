@@ -6,7 +6,7 @@
   }
   
   body{
-  background-image: url('6.jpg');
+  background-image: url('{{ url_for('static', filename='image/7.jpg') }}');
   background-size: cover;
   background-repeat: no-repeat;
   }

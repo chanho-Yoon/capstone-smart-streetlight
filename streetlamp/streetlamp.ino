@@ -101,6 +101,7 @@ void loop() {
   if ( soundokno != '1') {
     if(soundcnt == 3) {
       soundcnt = 0;
+      soundokno = '0';
     }
   }
   Serial.println(chledLight+","+shockno+","+soundokno+","+chdust);

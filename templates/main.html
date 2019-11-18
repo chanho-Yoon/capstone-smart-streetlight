@@ -13,6 +13,7 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 </head>
 
+<!--<body background="{{ url_for('static', filename='image/7.jpg') }}"> -->
 <body background="{{ url_for('static', filename='image/7.jpg') }}">
   <script language="javascript" type="text/javascript">
 
@@ -52,17 +53,36 @@
       <div class="sensor" style="margin-top: 30px;">
         <div class="sensor__shock" style="margin:50px 20px">
           <div class="sensor-column">
-            <h1>충격 감지 : {{shock}}</h1>
+            {% if shock == '1' %}
+              <h1>충격 감지</h1>
+            {% else %}
+              <h1>충격 미감지</h1>
+            {% endif %}
           </div>
         </div>
         <div class="sensor__shock" style="margin:50px 20px">
-          <div class="sensor-column">
-            <h1>먼지수치 : {{dust}}</h1>
+          <div class="sensor-column" style = "">
+            <h1>먼지수치 : 
+            {% if dust|int < 30 %}
+              좋음 --  {{dust}}</h1>
+            {% elif ((dust|int > 30) and (dust|int < 80)) %}
+              보통 --  {{dust}}</h1>
+            {% elif ((dust|int > 80) and (dust|int < 150)) %}
+              나쁨 --  {{dust}}</h1>
+            {% else %}
+              아주 나쁨 - {{dust}}</h1>
+            {% endif %}
           </div>
         </div>
         <div class="sensor__sound" style="margin:50px 20px">
           <div class="sensor-column">
-            <h1>사고 사운드 감지 : {{sound}}</h1>
+            <h1>사고 사운드 감지 : 
+            {% if sound == '1' %}
+              사고감지</h1>
+            {% else %}
+              미감지</h1>
+            {% endif %}
+            </h1>
           </div>
         </div>
         <div class="sersno__light" style="margin:50px 20px">

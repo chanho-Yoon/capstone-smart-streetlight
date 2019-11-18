@@ -42,6 +42,7 @@ def hello():
     time.sleep(5)
     ser.close()
 @app.route("/cctv.html")
+
 def cctv():
     
         return render_template('cctv.html')

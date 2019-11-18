@@ -13,6 +13,7 @@ int V_LED = 2;   //dust LED 2번핀
 
 volatile int count = 0;
 int shock = 1;
+int soundcnt = 0;
 String chledLight; /* 아두이노 센서값 문자열로 라즈베리파이 파이썬에서 받기 위해 문자열 변환*/
 String chcount;
 String chsoundL;
@@ -91,12 +92,19 @@ void loop() {
   chdust = String(dustDensity);
   
   if(count >= 1) {
-    Serial.println(chledLight+","+shockok+","+soundokno+","+chdust);
-    count = 0;
+    count = count +1 ;
+
+    if(count == 3) {
+      count = 0 ;
+    }
   }
-  else {
-    Serial.println(chledLight+","+shockno+","+soundokno+","+chdust);
+  if ( soundokno != '1') {
+    if(soundcnt == 3) {
+      soundcnt = 0;
+    }
   }
+  Serial.println(chledLight+","+shockno+","+soundokno+","+chdust);
+
   //Serial.println(chledLight+" "+shockok+" "+chsoundL+" "+chsoundR+" "+chdust);
   
   delay(4950);

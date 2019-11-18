@@ -14,6 +14,7 @@ int V_LED = 2;   //dust LED 2번핀
 volatile int count = 0;
 int shock = 1;
 int soundcnt = 0;
+int shockcnt = 0;
 String chledLight; /* 아두이노 센서값 문자열로 라즈베리파이 파이썬에서 받기 위해 문자열 변환*/
 String chcount;
 String chsoundL;
@@ -56,7 +57,7 @@ void loop() {
   }
   
   //----------------------servo-----------------
-  soundokno = "0";
+  
   if(soundd1 > 160) {
     soundokno = "1";
     servo.write(30);
@@ -91,14 +92,18 @@ void loop() {
   dustDensity = abs(dustDensity);
   chdust = String(dustDensity);
   
-  if(count >= 1) {
-    count = count +1 ;
-
-    if(count == 3) {
-      count = 0 ;
+  if(count >= 1) {   
+    if(shockcnt != 3) {
+      count = 1;
+      shockcnt = shockcnt + 1;
+    }
+    else {
+      count = 0;
+      shockcnt = 0;
     }
   }
-  if ( soundokno == "1") {
+  
+  if ( soundokno == "1" ) {
     if(soundcnt == 3) {
       soundokno = "0";
       soundcnt = 0;
@@ -108,10 +113,12 @@ void loop() {
       soundcnt = soundcnt + 1;
     }
   }
-  Serial.println(chledLight+","+shockno+","+soundokno+","+chdust);
-
-  //Serial.println(chledLight+" "+shockok+" "+chsoundL+" "+chsoundR+" "+chdust);
-  
+  if ( count == 1 ) {
+    Serial.println(chledLight+","+shockok+","+soundokno+","+chdust);
+  }
+  else {
+    Serial.println(chledLight+","+shockno+","+soundokno+","+chdust);
+  }
   delay(4950);
 }
   void HIT_ISR(void) {

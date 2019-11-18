@@ -91,9 +91,9 @@
           
           {% if sound == '1' %}
           <h1>사고 사운드 감지 : 사고감지<button onclick ="sound_sense();" value="이동">CCTV 확인</button></h1>
-          {% if sound == '1' %}
+          {% else %}
           <h1>사고 사운드 감지 : 사고미감지</h1>
-            {% endif %}
+          {% endif %}
         </div>
       </div>
       <div class="sersno__light" style="margin:50px 20px">

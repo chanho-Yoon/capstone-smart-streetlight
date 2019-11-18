@@ -98,10 +98,14 @@ void loop() {
       count = 0 ;
     }
   }
-  if ( soundokno != '1') {
+  if ( soundokno == "1") {
     if(soundcnt == 3) {
+      soundokno = "0";
       soundcnt = 0;
-      soundokno = '0';
+    }
+    else {
+      soundokno = "1";
+      soundcnt = soundcnt + 1;
     }
   }
   Serial.println(chledLight+","+shockno+","+soundokno+","+chdust);

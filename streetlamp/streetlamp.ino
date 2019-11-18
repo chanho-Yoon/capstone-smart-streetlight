@@ -91,7 +91,7 @@ void loop() {
   dustDensity = (Voltage - 0.3)/0.005;
   dustDensity = abs(dustDensity);
   chdust = String(dustDensity);
-  
+  //충격, 소리 감지시 15초 가량 딜레이로 웹에서 True 를 보내기 위함 
   if(count >= 1) {   
     if(shockcnt != 3) {
       count = 1;

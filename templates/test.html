@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+        integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>Smart Street</title>
+</head>
+
+<body>
+    <!-- 상단 목록창 header -->
+    <div class="menu-bar">
+        <div class="menu-bar__column">
+                <a href="#" class="menu-bar-column__link-title">Smart Streetlamp</a>
+        </div>
+        <div class="menu-bar__column">
+            <a href="http://0.0.0.0:5000/" class="menu-bar-column__link"><i class="fa fa-home fa-1x"></i> HOME</a>
+            <a href="http://0.0.0.0:5000/cctv.html" class="menu-bar-column__link"><i class="fa fa-camera fa-1x"></i> CCTV</a>
+        </div>
+    </div>
+    
+    <div class="main-image-top">
+        
+    </div>
+
+
+    <!-- 센서의 값이 보여질 main -->
+
+    <div class="sensor">
+        <div class="sensor__column">
+            <ul class="sensor__list">
+                <li class="sensor__list-item">충격감지 여부</li>
+                <li class="sensor__list-item">미세먼지 수치 </li>
+                <li class="sensor__list-item">사고 사운드 감지 </li>
+                <li class="sensor__list-item">광량 수치 </li>
+            </ul>
+        </div>
+        <div class="sensor__column">
+            <ul class="sensor__list">
+                <li class="sensor__list-item">  &nbsp; : {{shock}}</li>
+                <li class="sensor__list-item">  &nbsp; : {{dust}}</li>
+                <li class="sensor__list-item">  &nbsp; : {{sound}}</li>
+                <li class="sensor__list-item">  &nbsp; : {{light}}</li>
+            </ul>
+        </div>
+        </ul>
+    </div>
+</body>
+</html>

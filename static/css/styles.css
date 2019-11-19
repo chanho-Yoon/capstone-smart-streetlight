@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+@import "reset.css";
+@import "menu-bar.css";
+
+body {
+    background-color: white;
+    color:#020202;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,'Helvetica Neue', sans-serif;
+    font-size: 30px;
+}
+/* menu bar ---------------------------------------------- */
+.menu-bar {
+    background-color: black;
+    padding: 20px;
+    margin-bottom: 0px;
+    height: 25px;
+    display: flex;
+}
+
+.menu-bar__column {
+    display: flex;
+    justify-content: left;
+    margin-left: 10px;
+    margin-right: 70px;
+    align-items: center;
+}
+
+.menu-bar-column__link-title {
+    color: white !important;
+    font-size: 30px; 
+}
+
+.menu-bar-column__link {
+    margin-right: 50px;  
+    font-size: 15px;
+    color: white !important;
+    transition: all .5s ease-in-out;
+}
+
+.menu-bar-column__link:hover {
+    font-size:20px;
+    color: black !important;
+    background-color: white;
+}
+/* menu bar -------------------------------------------------- */
+/*  */
+.main-image-top {
+    background-image: url("/static/image/mainstreetlamp.jpeg");
+    width: 100%;
+    height: 300px;
+    background-repeat: repeat;
+    background-size: contain;
+    margin-bottom: 40px;
+}
+/*  */
+
+.sensor {
+    display: flex;
+    margin-left: 40px;
+}
+
+.sensor__list-item {
+    margin-bottom: 60px;
+}

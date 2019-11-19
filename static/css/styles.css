@@ -45,11 +45,13 @@ body {
 /* menu bar -------------------------------------------------- */
 /*  */
 .main-image-top {
-    background-image: url("/static/image/mainstreetlamp.jpeg");
+    background-image: url("/static/image/mainstreetlamp1.jpg");
     width: 100%;
-    height: 300px;
-    background-repeat: repeat;
-    background-size: contain;
+    height: 250px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: cover;
+    background-attachment: scroll;
     margin-bottom: 40px;
 }
 /*  */

@@ -12,7 +12,7 @@ body {
 .menu-bar {
     background-color: black;
     padding: 20px;
-    margin-bottom: 0px;
+    
     height: 25px;
     display: flex;
 }
@@ -28,6 +28,7 @@ body {
 .menu-bar-column__link-title {
     color: white !important;
     font-size: 30px; 
+    margin-top: -10px;
 }
 
 .menu-bar-column__link {
@@ -53,14 +54,30 @@ body {
     background-image: cover;
     background-attachment: scroll;
     margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 /*  */
 
-.sensor {
+.sensor__column {
     display: flex;
-    margin-left: 40px;
+    margin-top: 70px;
+    justify-content: center;
 }
 
-.sensor__list-item {
-    margin-bottom: 60px;
+.sensor__column-list {
+    font-size: 16px;
+    margin: 0px 30px;
 }
+
+.sensor__column-list h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sensor__column-list span {
+    font-size: 17px;
+}
+

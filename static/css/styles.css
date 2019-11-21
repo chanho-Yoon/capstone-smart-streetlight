@@ -8,6 +8,10 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,'Helvetica Neue', sans-serif;
     font-size: 30px;
 }
+#chart {
+    max-width: 600px;
+    max-height: 4
+}
 /* menu bar ---------------------------------------------- */
 .menu-bar {
     background-color: black;
@@ -60,7 +64,6 @@ body {
     
 }
 /*  */
-
 .sensor__column {
     display: flex;
     margin-top: 70px;
@@ -69,7 +72,9 @@ body {
 
 .sensor__column-list {
     font-size: 16px;
-    margin: 0px 30px;
+    margin: 0px 50px;
+    width: 10%;
+    height: 400px;
 }
 
 .sensor__column-list h1 {
@@ -81,3 +86,7 @@ body {
     font-size: 17px;
 }
 
+.light {
+    display: inline-block;
+    margin: 0 auto;
+}

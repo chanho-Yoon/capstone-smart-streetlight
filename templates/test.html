@@ -42,13 +42,13 @@
         loadlink() // this will run after every 3 seconds
     }, 5000);
 
-    // Chart. js ----------------------------
+    // Chart. js
     window.onload = function () {
 
         var dps = []; // dataPoints
         var chart = new CanvasJS.Chart("chartContainer", {
             title: {
-                text: "Dynamic Data"
+                text: "전류 사용량 ( mA )"
             },
             axisY: {
                 includeZero: false
@@ -88,7 +88,7 @@
         setInterval(function () { updateChart() }, updateInterval);
 
     }
-    // Chart js end---------------------
+    // Chart js end
 </script>
 
 <body>
@@ -149,7 +149,7 @@
             </div>
         </div>
     </div>
-    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <div id="chartContainer" style="height: 300px; width: 100%; margin-bottom: 40px;"></div>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 </body>

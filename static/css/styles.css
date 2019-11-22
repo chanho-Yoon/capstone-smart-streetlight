@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+@import "reset.css";
+@import "menu-bar.css";
+
+body {
+    background-color: white;
+    color:#020202;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,'Helvetica Neue', sans-serif;
+    font-size: 30px;
+}
+#chart {
+    max-width: 600px;
+    max-height: 4
+}
+/* menu bar ---------------------------------------------- */
+.menu-bar {
+    background-color: black;
+    padding: 20px;
+    
+    height: 25px;
+    display: flex;
+}
+
+.menu-bar__column {
+    display: flex;
+    justify-content: left;
+    margin-left: 10px;
+    margin-right: 70px;
+    align-items: center;
+}
+
+.menu-bar-column__link-title {
+    color: white !important;
+    font-size: 30px; 
+    margin-top: -10px;
+}
+
+.menu-bar-column__link {
+    margin-right: 50px;  
+    font-size: 15px;
+    color: white !important;
+    transition: all .5s ease-in-out;
+}
+
+.menu-bar-column__link:hover {
+    font-size:20px;
+    color: black !important;
+    background-color: white;
+}
+/* menu bar -------------------------------------------------- */
+/*  */
+.main-image-top {
+    background-image: url("/static/image/mainstreetlamp1.jpg");
+    width: 100%;
+    height: 250px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: cover;
+    background-attachment: scroll;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+/*  */
+.sensor__column {
+    display: flex;
+    margin-top: 70px;
+    text-align: center;
+    width: 100%;
+    height: 250px;
+}
+
+.sensor__column-list {
+    font-size: 16px;
+    margin: 0px 30px;
+    width: 25%;
+    height: 400px;
+}
+
+.sensor__column-list h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sensor__column-list span {
+    font-size: 17px;
+}
+

@@ -29,10 +29,17 @@
         alert("가로등 충격 감지!!");
         location.href = "http://0.0.0.0:5000/cctv.html";
     }
-
+    
+    function autoRefresh_div()
+    {
+        $("#receive").load("http://0.0.0.0:5000/");
+    }
+    setInterval('autoRefresh_div()', 5000); // 5초 후에 div 새로 
+    
+    /*
     function loadlink() {
         $('#receive').load('http://0.0.0.0:5000/', function () {
-            $(this).unwrap();
+            $(this).wrap();
         });
     }
 
@@ -41,7 +48,7 @@
     setInterval(function () {
         loadlink() // this will run after every 3 seconds
     }, 5000);
-
+    */
     // Chart. js
     window.onload = function () {
 
@@ -60,8 +67,8 @@
         });
 
         var xVal = 0;
-        var yVal = 100;
-        var updateInterval = 1000;
+        var yVal = {{light}};
+        var updateInterval = 600;
         var dataLength = 20; // number of dataPoints visible at any point
 
         var updateChart = function (count) {
@@ -89,9 +96,10 @@
 
     }
     // Chart js end
-</script>
+</script></div>
 
 <body>
+    <div id="receive">
     <!-- 상단 목록창 header -->
     <div class="menu-bar">
         <div class="menu-bar__column">
@@ -107,12 +115,12 @@
     <div class="main-image-top">
     </div>
     <!-- 센서의 값이 보여질 main -->
+    
     <div class="sensor">
         <div class="sensor__column">
             <div class="sensor__column-list">
                 <h1>충격감지 여부</h1>
                 <br><br>
-                <span>{{shock}}</span>
                 {% if shock == '1' %}
                 <span>충격 감지<button onclick="shock_sense();" value="이동">CCTV 확인</button></span>
                 {% else %}
@@ -122,7 +130,7 @@
             <div class="sensor__column-list">
                 <h1>미세먼지 수치</h1>
                 <br><br>
-                <span>먼지수치 :
+                <span>
                     {% if dust|int < 30 %}
                     좋음 -- {{dust}}</span>
                 {% elif ((dust|int > 30) and (dust|int < 80)) %}
@@ -149,9 +157,9 @@
             </div>
         </div>
     </div>
-    <div id="chartContainer" style="height: 300px; width: 100%; margin-bottom: 40px;"></div>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
+    </div>
+<div id="chartContainer" style="height: 300px; width: 100%; margin-bottom: 40px; margin-top: -200px;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 
 </html>

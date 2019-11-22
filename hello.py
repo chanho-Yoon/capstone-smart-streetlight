@@ -14,7 +14,7 @@ print(ser.name)
 app = Flask(__name__)
 
 @app.route("/")
-@app.route("/main")
+@app.route("/test")
 def hello():
     a = 1
     while a:
@@ -40,7 +40,7 @@ def hello():
         else :
             time.sleep(1)
 
-    return render_template('main.html',**templateData)
+    return render_template('test.html',**templateData)
     time.sleep(5)
     ser.close()
 @app.route("/cctv.html")

@@ -1,4 +1,4 @@
-// VALUE -----------------------------------------------
+ // VALUE -----------------------------------------------
 #include <Servo.h>
 Servo servo;
 int servoPin=6;
@@ -50,8 +50,6 @@ void loop() {
   int ledLight = map(light, 0, 1023, 255, 0);
   int soundd1 = analogRead(A2);
   int soundd2 = analogRead(A4);
-  Serial.println(soundd1);
-  Serial.println(soundd2);
   analogWrite(11, ledLight);
   if(ledLight<77) {
     analogWrite(11, LOW);
@@ -120,8 +118,8 @@ void loop() {
   else {
     Serial.println(chledLight+","+shockno+","+soundokno+","+chdust);
   }
-  //delay(4950);
-  delay(1000);
+  delay(4950);
+  
 }
   void HIT_ISR(void) {
     count++;

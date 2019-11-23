@@ -24,12 +24,14 @@ def hello():
             value = dataVal.split(',')
             print (value)
             lightString = value[0]
-            shockString = value[1]
-            soundString = value[2]
-            dustString = value[3]
+            ampString = value[1]
+            shockString = value[2]
+            soundString = value[3]
+            dustString = value[4]
             
             templateData = {
             'light':lightString,
+            'amp' : ampString,
             'shock':shockString,
             'sound':soundString,
             'dust':dustString
@@ -47,7 +49,7 @@ def hello():
 
 def cctv():
     
-        return render_template('cctv.html')
+        return render_template('/cctv.html')
 
 
 

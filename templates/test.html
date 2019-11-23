@@ -68,7 +68,7 @@
 
         var xVal = 0;
         var yVal = {{light}};
-        var updateInterval = 600;
+        var updateInterval = 5000;
         var dataLength = 20; // number of dataPoints visible at any point
 
         var updateChart = function (count) {
@@ -128,6 +128,15 @@
                 {% endif %}
             </div>
             <div class="sensor__column-list">
+                <h1>사고 사운드 감지</h1>
+                <br><br>
+                {% if sound == '1' %}
+                <span>사고감지<button onclick="sound_sense();" value="이동">CCTV 확인</button></span>
+                {% else %}
+                <span>사고미감지</span>
+                {% endif %}
+            </div>
+            <div class="sensor__column-list">
                 <h1>미세먼지 수치</h1>
                 <br><br>
                 <span>
@@ -142,18 +151,14 @@
                 {% endif %}
             </div>
             <div class="sensor__column-list">
-                <h1>사고 사운드 감지</h1>
-                <br><br>
-                {% if sound == '1' %}
-                <span>사고감지<button onclick="sound_sense();" value="이동">CCTV 확인</button></span>
-                {% else %}
-                <span>사고미감지</span>
-                {% endif %}
-            </div>
-            <div class="sensor__column-list">
                 <h1>광량 수치</h1>
                 <br><br>
                 <span>{{light}}</span>
+            </div>
+            <div class="sensor__column-list">
+                <h1>전류 사용량</h1>
+                <br><br>
+                <span>{{amp}} mA</span>
             </div>
         </div>
     </div>

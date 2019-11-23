@@ -1,9 +1,9 @@
- // VALUE -----------------------------------------------
+// VALUE -----------------------------------------------
 #include <Servo.h>
 Servo servo;
 int servoPin=6;
 
-int pin_led = A0;
+int pin_led = A5;
 int pin_shock = 3;
 int min_value = 544;
 int max_value = 2400;
@@ -38,7 +38,7 @@ void setup() {
   servo.attach(6);
   pinMode(V_LED, OUTPUT);
   pinMode(Vo, INPUT);
-  
+  pinMode(A4, INPUT);
 }
 
 void loop() {
@@ -48,8 +48,13 @@ void loop() {
   int light = analogRead(pin_led);
   int shock = analogRead(pin_shock);
   int ledLight = map(light, 0, 1023, 255, 0);
-  int soundd1 = analogRead(A2);
-  int soundd2 = analogRead(A4);
+  int soundd1 = analogRead(A3);
+  int soundd2 = analogRead(A0);
+  int livalue = analogRead(A4);
+  int amp = (((livalue-511)*5/0.185)/1024)*1000; 
+  int absamp = abs(amp);
+  String champ = String(absamp);
+  
   analogWrite(11, ledLight);
   if(ledLight<77) {
     analogWrite(11, LOW);
@@ -57,11 +62,11 @@ void loop() {
   
   //----------------------servo-----------------
   
-  if(soundd1 > 37) {
+  if(soundd1 > 30) {
     soundokno = "1";
-    servo.write(30);
-  } else if(soundd2 > 37) {
-    servo.write(150);
+    servo.write(40);
+  } else if(soundd2 > 30) {
+    servo.write(140);
     soundokno = "1";
   }
   
@@ -113,12 +118,12 @@ void loop() {
     }
   }
   if ( count == 1 ) {
-    Serial.println(chledLight+","+shockok+","+soundokno+","+chdust);
+    Serial.println(chledLight+","+champ+","+shockok+","+soundokno+","+chdust);
   }
   else {
-    Serial.println(chledLight+","+shockno+","+soundokno+","+chdust);
+    Serial.println(chledLight+","+champ+","+shockno+","+soundokno+","+chdust);
   }
-  delay(4950);
+  delay(5000);
   
 }
   void HIT_ISR(void) {

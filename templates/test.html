@@ -141,13 +141,13 @@
                 <br><br>
                 <span>
                     {% if dust|int < 30 %}
-                    좋음 -- {{dust}}</span>
+                    좋음 ( {{dust}} )</span>
                 {% elif ((dust|int > 30) and (dust|int < 80)) %}
-                보통 -- {{dust}}</span>
+                보통 ( {{dust}} )</span>
                 {% elif ((dust|int > 80) and (dust|int < 150)) %}
-                나쁨 -- {{dust}}</span>
+                나쁨 ( {{dust}} )</span>
                 {% else %}
-                아주 나쁨 - {{dust}}</span>
+                아주 나쁨 ( {{dust}} )</span>
                 {% endif %}
             </div>
             <div class="sensor__column-list">

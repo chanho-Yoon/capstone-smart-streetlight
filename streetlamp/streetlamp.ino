@@ -66,7 +66,7 @@ void loop() {
     soundokno = "1";
     servo.write(40);
   } else if(soundd2 > 30) {
-    servo.write(140);
+    servo.write(120);
     soundokno = "1";
   }
   

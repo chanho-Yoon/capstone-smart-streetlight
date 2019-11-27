@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
         integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="/static/css/styles.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <style>
@@ -131,7 +131,7 @@
                 <h1>사고 사운드 감지</h1>
                 <br><br>
                 {% if sound == '1' %}
-                <span>사고감지<button onclick="window.open('cctv.html')" value="이동">CCTV 확인</button></span>
+                <span>사고감지<button onclick="sound_sense();" value="이동">CCTV 확인</button></span>
                 {% else %}
                 <span>사고미감지</span>
                 {% endif %}
